@@ -14,6 +14,26 @@
  */
 
 /* -------------------------------------------------------------------------- */
+/*  ASSET PATHS                                                                */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Prefixes a /public asset with the deployment's base path.
+ *
+ * On a GitHub Pages *project* site the app is served from /<repo-name>, and
+ * `next/image` with `unoptimized: true` does NOT apply basePath automatically
+ * the way it does for CSS and fonts — the src is passed through verbatim. So
+ * image URLs have to carry the prefix themselves or they 404 in production
+ * while working perfectly on localhost.
+ *
+ * Must stay in sync with `basePath` in next.config.mjs (both read the same
+ * env var, so there is nothing to keep in sync by hand).
+ */
+export function asset(path: string): string {
+  return `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}${path}`;
+}
+
+/* -------------------------------------------------------------------------- */
 /*  BUSINESS                                                                   */
 /* -------------------------------------------------------------------------- */
 
@@ -104,7 +124,7 @@ export const hero = {
     'Sessions in about 20 minutes',
   ],
   image: {
-    src: '/images/clinic-treatment-room.png',
+    src: asset('/images/clinic-treatment-room.png'),
     alt: 'Treatment room at the Laser Spot clinic in Brampton, with a laser device and a prepared treatment bed',
   },
 } as const;
@@ -189,7 +209,7 @@ export const comfort = {
     },
   ],
   image: {
-    src: '/images/clinic-reception.png',
+    src: asset('/images/clinic-reception.png'),
     alt: 'The reception and waiting area of the Laser Spot clinic, with soft lighting and neutral furnishings',
   },
 } as const;
