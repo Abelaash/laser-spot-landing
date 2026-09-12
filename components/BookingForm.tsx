@@ -107,11 +107,27 @@ export function BookingForm() {
       if (tracking.formEndpoint) {
         const response = await fetch(tracking.formEndpoint, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            // Without this, Formspree (and several other form services) reply
+            // with a 302 to their own thank-you page instead of JSON. fetch
+            // follows that redirect silently, so a rejected submission would
+            // still look like a success and the lead would be lost with no
+            // error shown to anyone.
+            Accept: 'application/json',
+          },
           body: JSON.stringify(payload),
         });
 
-        if (!response.ok) throw new Error(`Request failed: ${response.status}`);
+        if (!response.ok) {
+          // Surface the provider's own message where there is one — form
+          // services report validation problems (unconfirmed form, quota
+          // reached, blocked domain) in the body of a non-2xx response.
+          const detail = await response.text().catch(() => '');
+          throw new Error(
+            `Request failed: ${response.status}${detail ? ` — ${detail.slice(0, 200)}` : ''}`,
+          );
+        }
       } else if (process.env.NODE_ENV !== 'production') {
         // No endpoint configured — keep the page usable in development.
         // eslint-disable-next-line no-console
