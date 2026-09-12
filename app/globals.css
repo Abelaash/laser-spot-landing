@@ -1,0 +1,78 @@
+@import 'tailwindcss';
+
+/* ==========================================================================
+   Design tokens — Laser Spot
+   Warm ivory ground, deep plum brand, muted gold for ratings.
+   ========================================================================== */
+
+@theme {
+  --color-cream-50: #fdfbfa;
+  --color-cream-100: #faf5f2;
+  --color-cream-200: #f2e9e4;
+
+  --color-plum-50: #f7f0f4;
+  --color-plum-100: #ecdde5;
+  --color-plum-300: #c39fb3;
+  /* Meets 3:1 against cream-50 — used for form control borders. */
+  --color-plum-400: #a08b98;
+  --color-plum-500: #8b5f77;
+  --color-plum-600: #714a60;
+  --color-plum-700: #573a4b;
+  --color-plum-900: #33222c;
+
+  --color-ink-500: #6b6169;
+  --color-ink-700: #4a4147;
+  --color-ink-900: #241c22;
+
+  --color-gold-500: #b08a4f;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    'Segoe UI', Roboto, sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, 'Times New Roman',
+    serif;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-cream-50);
+    color: var(--color-ink-900);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Respect users who ask for less motion. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* A single, consistent focus ring across every interactive element. */
+  :where(a, button, input, textarea, select, [tabindex]):focus-visible {
+    outline: 2px solid var(--color-plum-600);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  /* Anchor offset so the sticky bar never covers a scrolled-to section. */
+  .scroll-anchor {
+    scroll-margin-top: 1.5rem;
+  }
+}
