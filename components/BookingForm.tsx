@@ -42,6 +42,11 @@ const initialValues: Record<FieldName, string> = {
 
 export function BookingForm() {
   const [values, setValues] = useState(initialValues);
+  /**
+   * Honeypot. Hidden from people, but present in the DOM where automated
+   * submitters find and fill it. Any value here means the submission is a bot.
+   */
+  const [honeypot, setHoneypot] = useState('');
   const [errors, setErrors] = useState<Errors>({});
   /** Fields the user has left once — we only show errors after that. */
   const [touched, setTouched] = useState<Partial<Record<FieldName, boolean>>>({});
@@ -88,6 +93,15 @@ export function BookingForm() {
       return;
     }
 
+    // Drop bot submissions here rather than at the endpoint. Letting them
+    // through would fire generate_lead on junk, and those fake conversions
+    // feed straight into Google's smart bidding. Show the success state so
+    // the bot cannot tell it was filtered.
+    if (honeypot) {
+      setStatus('success');
+      return;
+    }
+
     setStatus('submitting');
 
     const payload = {
@@ -96,6 +110,10 @@ export function BookingForm() {
       email: values.email.trim(),
       preferred_time: values.preferred.trim(),
       form_name: tracking.formName,
+      // Formspree-specific keys. `email` above is already picked up as the
+      // reply-to address, so the clinic can reply straight to the client.
+      _subject: bookingForm.emailSubject,
+      _gotcha: honeypot,
       service: offer.service,
       offer_price: offer.showPrice ? offer.promoPrice : null,
       currency: offer.currency,
@@ -268,6 +286,25 @@ export function BookingForm() {
                 value={values.preferred}
                 onChange={(value) => setField('preferred', value)}
                 className="sm:col-span-2"
+              />
+            </div>
+
+            {/*
+              Visually hidden rather than display:none — some automated
+              submitters skip hidden inputs but fill off-screen ones.
+              aria-hidden and tabIndex keep it out of the keyboard and
+              screen-reader paths entirely.
+            */}
+            <div className="sr-only" aria-hidden="true">
+              <label htmlFor="company-website">Company website</label>
+              <input
+                id="company-website"
+                name="_gotcha"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                value={honeypot}
+                onChange={(event) => setHoneypot(event.target.value)}
               />
             </div>
 

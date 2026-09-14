@@ -278,6 +278,12 @@ export const bookingForm = {
     preferred: 'e.g. Saturday morning, or weekday evenings',
   },
   optionalSuffix: 'optional',
+  /**
+   * Subject line for the notification email the clinic receives.
+   * Formspree reads the `_subject` key; other endpoints ignore it harmlessly.
+   */
+  emailSubject: 'New booking request — Brazilian offer (Laser Spot)',
+
   /** Text under the submit button. */
   privacyNote:
     'We use your details only to contact you about this appointment. No spam, and you can ask us to delete your information at any time.',
