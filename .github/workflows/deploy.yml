@@ -42,10 +42,9 @@ jobs:
           # Set these under Settings -> Secrets and variables -> Actions -> Variables.
           NEXT_PUBLIC_GTM_ID: ${{ vars.NEXT_PUBLIC_GTM_ID }}
           NEXT_PUBLIC_FORM_ENDPOINT: ${{ vars.NEXT_PUBLIC_FORM_ENDPOINT }}
-          # Project sites serve from /<repo-name>. When a custom domain is
-          # attached the site moves to the domain root — delete this line then,
-          # or every asset URL will carry a prefix that no longer exists.
-          NEXT_PUBLIC_BASE_PATH: /laser-spot-landing
+          # Served from the root of book.laserspot.ca, so no base path.
+          # (A GitHub Pages *project* site would need NEXT_PUBLIC_BASE_PATH set
+          # to /laser-spot-landing here; a custom domain must not have it.)
         run: npm run build
 
       - uses: actions/configure-pages@v5
