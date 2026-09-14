@@ -42,21 +42,10 @@ jobs:
           # Set these under Settings -> Secrets and variables -> Actions -> Variables.
           NEXT_PUBLIC_GTM_ID: ${{ vars.NEXT_PUBLIC_GTM_ID }}
           NEXT_PUBLIC_FORM_ENDPOINT: ${{ vars.NEXT_PUBLIC_FORM_ENDPOINT }}
-          # Which URL the site is served from decides this value:
-          #
-          #   Project site  https://abelaash.github.io/laser-spot-landing/
-          #     -> must be /laser-spot-landing (assets live under that path)
-          #
-          #   Custom domain https://book.laserspot.ca/
-          #     -> must be REMOVED (the site is then at the domain root)
-          #
-          # A custom domain only takes effect once the repo claims it under
-          # Settings -> Pages -> Custom domain. DNS alone cannot do it: a
-          # CNAME points at a host, never at a path, so GitHub needs the repo
-          # setting to know which site answers for book.laserspot.ca.
-          #
-          # Delete the line below at the same time as saving that setting.
-          NEXT_PUBLIC_BASE_PATH: /laser-spot-landing
+          # Served at https://book.laserspot.ca/ — the domain root — so there
+          # is no base path. A custom domain drops the /<repo-name> prefix
+          # that the github.io project URL uses; setting one here would push
+          # every asset under a path that does not exist.
         run: npm run build
 
       - uses: actions/configure-pages@v5
