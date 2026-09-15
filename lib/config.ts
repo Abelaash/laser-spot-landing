@@ -221,7 +221,7 @@ export const comfort = {
 } as const;
 
 /* -------------------------------------------------------------------------- */
-/*  SOCIAL PROOF — swap these three out for real reviews                       */
+/*  SOCIAL PROOF — real Google reviews, quoted verbatim                        */
 /* -------------------------------------------------------------------------- */
 
 export type Testimonial = {
@@ -235,23 +235,23 @@ export type Testimonial = {
 export const testimonials: Testimonial[] = [
   {
     quote:
-      'PLACEHOLDER — The clinic is spotless and the staff explained every step before starting. Booking was easy and they ran exactly on time.',
-    name: 'Placeholder Name',
-    meta: 'Verified client · Brampton',
+      'Shela is amazing! She’s so professional, welcoming, and makes every appointment super comfortable. The results have been incredible and I always leave happy. Highly recommend her for laser hair removal! I can’t wait to continue to see results.',
+    name: 'Katie Tsagarelis',
+    meta: 'Google review · Brampton',
     rating: 5,
   },
   {
     quote:
-      'PLACEHOLDER — Very professional from the consultation onward. The private rooms made a real difference, and the technician was great about answering questions.',
-    name: 'Placeholder Name',
-    meta: 'Verified client · Brampton',
+      'I have been visiting for the last few years. My hair growth has significantly decreased. The process is completely painless. Friendly service from Sheila everytime I visit.',
+    name: 'Sondeep Rakkar',
+    meta: 'Google review · Brampton',
     rating: 5,
   },
   {
     quote:
-      'PLACEHOLDER — Clear pricing, no pressure, and they walked me through the full treatment plan up front. Would recommend to anyone comparing clinics.',
-    name: 'Placeholder Name',
-    meta: 'Verified client · Brampton',
+      'I have been receiving laser hair removal treatments from laser spot and I am glad with the results as the hair growth has really decreased . It is also painless! She is very professional, respectful, and such a friendly person. I really recommend this place!',
+    name: 'Simranpreet Matharu',
+    meta: 'Google review · Brampton',
     rating: 5,
   },
 ];
