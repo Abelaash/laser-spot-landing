@@ -7,7 +7,9 @@
  *  page actually handles data (Formspree, Google Tag Manager). It is not
  *  legal advice — have it reviewed before launch.
  *
- *  Anything needing the clinic's confirmation is marked CONFIRM in a comment.
+ *  Reviewed and approved by the clinic (September 2026). The wording below
+ *  reflects deliberate choices, not placeholders — check with the clinic
+ *  before changing the retention period or the cancellation window.
  * ============================================================================
  */
 
@@ -102,8 +104,9 @@ export const privacyPolicy: LegalDocument = {
     {
       heading: 'How long we keep it',
       body: [
-        // CONFIRM with the clinic: actual retention period for enquiries that
-        // never convert, and for client records after a course of treatment.
+        // Deliberately not a fixed number of months: confirmed with the clinic
+        // that retention is tied to responding to the enquiry and to clinical
+        // record-keeping obligations.
         'We keep booking enquiries only as long as needed to respond to them and to maintain a record of the appointment. If you do not become a client, we remove your enquiry from our systems once it is no longer needed. Client treatment records are kept for the period required for clinical and regulatory purposes.',
         'You can ask us to delete your information sooner at any time.',
       ],
@@ -135,7 +138,7 @@ export const privacyPolicy: LegalDocument = {
     {
       heading: 'Questions or concerns',
       body: [
-        // CONFIRM with the clinic: who is the designated privacy contact.
+        // Privacy requests go to the clinic's monitored inbox (business.email).
         `To ask a question, make a request about your information, or raise a concern, contact us at ${business.email} or ${business.phoneDisplay}. We will respond within a reasonable time.`,
         'If you are not satisfied with our response, you may contact the Office of the Privacy Commissioner of Canada.',
       ],
@@ -181,7 +184,7 @@ export const termsOfUse: LegalDocument = {
       body: [
         'Submitting the form is a request, not a confirmed appointment. A member of the clinic team will contact you to arrange a time. No payment is taken through this page.',
         'A consultation and patch test are required before your first treatment. If the consultation indicates that treatment is not appropriate for you, we will tell you and no treatment will be performed.',
-        // CONFIRM with the clinic: actual cancellation window and any fee.
+        // 24 hours, no cancellation fee — confirmed with the clinic.
         'Please give us at least 24 hours notice if you need to cancel or reschedule, so the appointment can be offered to someone else.',
       ],
     },
