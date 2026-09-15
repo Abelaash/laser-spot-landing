@@ -48,8 +48,7 @@ export const business = {
   phoneDisplay: '(416) 843-1396',
   /** Used for the tel: link — digits only, with country code. */
   phoneHref: '+14168431396',
-  /** PLACEHOLDER — swap in the real clinic inbox before launch. */
-  email: 'hello@laserspot.ca',
+  email: 'info@laserspot.ca',
   hours: 'Mon–Sat, 10am – 7pm',
 } as const;
 
