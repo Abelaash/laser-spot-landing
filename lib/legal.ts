@@ -163,7 +163,7 @@ export const termsOfUse: LegalDocument = {
     {
       heading: 'The new-client offer',
       body: [
-        `The advertised rate applies to ${offer.service.toLowerCase()} and is available to first-time ${business.name} clients only.`,
+        `The advertised rate applies to ${offer.serviceInline} and is available to first-time ${business.name} clients only.`,
       ],
       bullets: [
         'One discounted session per person',
@@ -232,7 +232,7 @@ export const termsOfUse: LegalDocument = {
 
 /** Used by both pages for the "back to the offer" link. */
 export const legalNav = {
-  back: `Back to the ${offer.service.toLowerCase()} offer`,
+  back: `Back to the ${offer.serviceInline} offer`,
   /** Fires no tracking — these are informational pages, not conversion paths. */
   formName: tracking.formName,
 } as const;

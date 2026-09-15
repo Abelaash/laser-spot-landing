@@ -57,8 +57,15 @@ export const business = {
 /* -------------------------------------------------------------------------- */
 
 export const offer = {
-  /** The service being promoted. */
+  /** The service being promoted. Title case — used for headings and labels. */
   service: 'Brazilian Laser Hair Removal',
+
+  /**
+   * The same service name written for use inside a sentence. Kept separate
+   * because lowercasing the title-cased version would produce "brazilian",
+   * and Brazilian is a proper adjective.
+   */
+  serviceInline: 'Brazilian laser hair removal',
 
   /**
    * NOT FINALIZED — change this one number and it updates everywhere
