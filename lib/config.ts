@@ -317,8 +317,8 @@ export const footer = {
   legalName: 'Laser Spot',
   tagline: 'Laser hair removal clinic · Brampton, Ontario',
   links: [
-    { label: 'Privacy Policy', href: '/privacy' },
-    { label: 'Terms', href: '/terms' },
+    { label: 'Privacy Policy', href: asset('/privacy/') },
+    { label: 'Terms', href: asset('/terms/') },
   ],
   /** Medical-style disclaimer. Good practice for paid traffic. */
   disclaimer:
