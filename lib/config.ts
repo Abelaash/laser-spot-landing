@@ -147,7 +147,7 @@ export type TrustBadge = {
 };
 
 export const trustBadges: TrustBadge[] = [
-  { icon: 'star', label: '5.0 Rating', sub: 'Across client reviews' },
+  { icon: 'star', label: '5.0 Rating', sub: '112 Google reviews' },
   { icon: 'users', label: '2,400+ Clients', sub: 'Served in Brampton' },
   { icon: 'shield', label: 'Health Canada', sub: 'Licensed equipment' },
   { icon: 'spark', label: 'DEKA Motus AX', sub: 'Alexandrite technology' },
@@ -260,7 +260,7 @@ export const socialProof = {
   heading: 'What clients say',
   intro: 'Reviews from clients treated at our Brampton location.',
   /** Summary line above the cards. */
-  summary: '5.0 average rating · 2,400+ clients served',
+  summary: '5.0 average rating from 112 Google reviews',
 } as const;
 
 /* -------------------------------------------------------------------------- */
