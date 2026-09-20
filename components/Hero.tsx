@@ -73,7 +73,8 @@ export function Hero() {
             </a>
           </div>
 
-          <ul className="mt-7 flex flex-col items-center gap-2 sm:mt-8 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-7">
+          {/* Centre the list as a block, not each item, so the ticks line up. */}
+          <ul className="mx-auto mt-7 flex w-fit flex-col items-start gap-2 sm:mt-8 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-7">
             {hero.bullets.map((bullet) => (
               <li
                 key={bullet}
