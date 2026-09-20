@@ -41,7 +41,7 @@ export const privacyPolicy: LegalDocument = {
     {
       heading: 'Who we are',
       body: [
-        `${business.name} is a laser hair removal clinic located at ${business.addressLine}. You can reach us by phone at ${business.phoneDisplay} or by email at ${business.email}.`,
+        `${business.name} is a licensed medical spa located at ${business.addressLine}. You can reach us by phone at ${business.phoneDisplay} or by email at ${business.email}.`,
         `We are responsible for the personal information under our control and handle it in accordance with Canada's Personal Information Protection and Electronic Documents Act (PIPEDA).`,
       ],
     },

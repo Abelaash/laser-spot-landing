@@ -2,6 +2,10 @@ import { StarRating } from '@/components/Icons';
 import { socialProof, testimonials } from '@/lib/config';
 
 export function SocialProof() {
+  // Nothing is better than the wrong thing: an empty section reads as
+  // deliberate, reviews for a different service read as careless.
+  if (!socialProof.enabled || testimonials.length === 0) return null;
+
   return (
     <section
       id="reviews"

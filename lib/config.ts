@@ -58,14 +58,14 @@ export const business = {
 
 export const offer = {
   /** The service being promoted. Title case — used for headings and labels. */
-  service: 'Brazilian Laser Hair Removal',
+  service: 'HydraFacial',
 
   /**
    * The same service name written for use inside a sentence. Kept separate
-   * because lowercasing the title-cased version would produce "brazilian",
-   * and Brazilian is a proper adjective.
+   * because the brand name is capitalised mid-sentence and must not be
+   * lowercased.
    */
-  serviceInline: 'Brazilian laser hair removal',
+  serviceInline: 'HydraFacial treatments',
 
   /**
    * NOT FINALIZED — change this one number and it updates everywhere
@@ -118,20 +118,25 @@ export const cta = {
 /* -------------------------------------------------------------------------- */
 
 export const hero = {
-  eyebrow: `${business.city}, ${business.provinceShort} · Licensed Laser Clinic`,
-  headline: 'Brazilian Laser Hair Removal',
+  eyebrow: `${business.city}, ${business.provinceShort} · Licensed Medical Spa`,
+  headline: 'HydraFacial Treatments',
   headlineAccent: 'in Brampton',
   subhead:
-    'Medical-grade DEKA Motus AX treatments performed by certified technicians in a private, professional clinic.',
+    'A 30-minute clinical facial that cleanses, exfoliates, extracts, and hydrates in one session — performed by certified medical aestheticians.',
   /** Short reassurance bullets under the CTA. */
   bullets: [
-    'Private treatment rooms',
-    'Certified laser technicians',
-    'Sessions in about 20 minutes',
+    'No downtime afterwards',
+    'Certified medical aestheticians',
+    'Sessions in about 30 minutes',
   ],
   image: {
     src: asset('/images/clinic-treatment-room.png'),
-    alt: 'Treatment room at the Laser Spot clinic in Brampton, with a laser device and a prepared treatment bed',
+    alt: 'Treatment room at the Laser Spot medical spa in Brampton, prepared for a facial treatment',
+  },
+  /** The credential chip layered over the hero image. */
+  deviceChip: {
+    title: 'HydraFacial',
+    body: 'Patented vortex technology with single-use treatment tips, used in licensed clinics worldwide.',
   },
 } as const;
 
@@ -150,7 +155,7 @@ export const trustBadges: TrustBadge[] = [
   { icon: 'star', label: '5.0 Rating', sub: '112 Google reviews' },
   { icon: 'users', label: '2,400+ Clients', sub: 'Served in Brampton' },
   { icon: 'shield', label: 'Health Canada', sub: 'Licensed equipment' },
-  { icon: 'spark', label: 'DEKA Motus AX', sub: 'Alexandrite technology' },
+  { icon: 'spark', label: 'HydraFacial', sub: 'Patented vortex technology' },
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -160,33 +165,32 @@ export const trustBadges: TrustBadge[] = [
 export const whatToExpect = {
   heading: 'What to expect',
   intro:
-    'A straightforward, clinical process from the first appointment through to your final session.',
+    'A straightforward clinical facial, delivered in a single appointment with no recovery time afterwards.',
   steps: [
     {
-      title: 'Consultation & patch test',
-      body: 'A certified technician reviews your health history, explains the treatment, and performs a small patch test to confirm the right laser settings.',
+      title: 'Consultation',
+      body: 'A certified aesthetician reviews your skincare history and goals, then selects the serums and settings appropriate for the session.',
     },
     {
-      title: 'Preparation',
-      body: 'The treatment area is shaved and cleansed beforehand. You will receive written pre-care instructions when your appointment is confirmed.',
+      title: 'Cleanse & exfoliate',
+      body: 'The treatment begins with a gentle cleanse and resurfacing step that lifts away dead skin cells and prepares the surface.',
     },
     {
-      title: 'The session',
-      body: 'The DEKA Motus AX handpiece moves over the area in smooth passes. Its integrated cooling keeps the treatment comfortable from start to finish.',
+      title: 'Extract & hydrate',
+      body: 'Painless vortex suction clears debris from pores while hydrating serums are delivered to the skin at the same time.',
     },
     {
-      title: 'Aftercare',
-      body: 'Most people return to their normal day right away. We provide aftercare guidance and book the next session before you leave.',
+      title: 'Nourish & protect',
+      body: 'The session finishes with antioxidant and peptide serums. Most people return to their day immediately, makeup included.',
     },
   ],
   /** The two headline facts clients ask about most. */
   facts: [
-    { value: '15–20 min', label: 'Typical session length' },
-    { value: '6–8 sessions', label: 'Typical course, spaced 4–6 weeks apart' },
+    { value: '30–45 min', label: 'Typical session length' },
+    { value: 'No downtime', label: 'Return to your day straight afterwards' },
   ],
-  /** Required-ish disclaimer. Keep it — it is good ad-policy hygiene. */
   disclaimer:
-    'Treatment plans vary. The number of sessions needed is determined during your consultation and is not guaranteed.',
+    'Treatment plans vary. Serums and settings are selected during your consultation, and outcomes differ from person to person.',
 } as const;
 
 /* -------------------------------------------------------------------------- */
@@ -194,24 +198,24 @@ export const whatToExpect = {
 /* -------------------------------------------------------------------------- */
 
 export const comfort = {
-  heading: 'Comfort, privacy, and clinical standards',
+  heading: 'Comfort, care, and clinical standards',
   intro:
-    'Laser Spot is built around a discreet, professional treatment experience. Here is how the clinic operates.',
+    'Laser Spot is a licensed medical spa, and treatments follow a documented clinical protocol. Here is how the clinic operates.',
   pillars: [
     {
       icon: 'lock' as const,
-      title: 'Private by design',
+      title: 'Private treatment rooms',
       body: 'Every treatment takes place in a fully enclosed private room with its own door. Appointments are scheduled to limit overlap in the waiting area, and client records are kept confidential.',
     },
     {
       icon: 'badge' as const,
-      title: 'Certified technicians',
-      body: 'Treatments are performed only by trained, certified laser technicians who follow a documented clinical protocol. You are welcome to request a technician preference when you book.',
+      title: 'Certified aestheticians',
+      body: 'Treatments are performed only by trained, certified medical aestheticians who follow a documented protocol. You are welcome to request a technician preference when you book.',
     },
     {
       icon: 'sparkle' as const,
-      title: 'Hygiene & sanitation',
-      body: 'Rooms are sanitized between every client. Linens are single-use or laundered per appointment, handpieces are disinfected to clinical standard, and consumables are never reused.',
+      title: 'Single-use tips & sanitation',
+      body: 'Every treatment uses a fresh, single-use tip that is discarded afterwards — nothing that touches the skin is reused. Rooms are sanitized between clients and linens are changed for every appointment.',
     },
   ],
   image: {
@@ -221,7 +225,7 @@ export const comfort = {
 } as const;
 
 /* -------------------------------------------------------------------------- */
-/*  SOCIAL PROOF — real Google reviews, quoted verbatim                        */
+/*  SOCIAL PROOF — needs HydraFacial reviews before it can be shown           */
 /* -------------------------------------------------------------------------- */
 
 export type Testimonial = {
@@ -233,33 +237,23 @@ export type Testimonial = {
 };
 
 export const testimonials: Testimonial[] = [
-  {
-    quote:
-      'Shela is amazing! She’s so professional, welcoming, and makes every appointment super comfortable. The results have been incredible and I always leave happy. Highly recommend her for laser hair removal! I can’t wait to continue to see results.',
-    name: 'Katie Tsagarelis',
-    meta: 'Google review · Brampton',
-    rating: 5,
-  },
-  {
-    quote:
-      'I have been visiting for the last few years. My hair growth has significantly decreased. The process is completely painless. Friendly service from Sheila everytime I visit.',
-    name: 'Sondeep Rakkar',
-    meta: 'Google review · Brampton',
-    rating: 5,
-  },
-  {
-    quote:
-      'I have been receiving laser hair removal treatments from laser spot and I am glad with the results as the hair growth has really decreased . It is also painless! She is very professional, respectful, and such a friendly person. I really recommend this place!',
-    name: 'Simranpreet Matharu',
-    meta: 'Google review · Brampton',
-    rating: 5,
-  },
+  // The clinic's three supplied Google reviews are all explicitly about laser
+  // hair removal ("my hair growth has decreased", "recommend her for laser
+  // hair removal"). Showing them under a HydraFacial offer would misrepresent
+  // them, so the section is switched off until HydraFacial reviews arrive.
+  // Paste them here and set socialProof.enabled to true.
 ];
 
 export const socialProof = {
+  /**
+   * Master switch for the reviews section. Currently off: the clinic's
+   * reviews on file are about laser hair removal, not HydraFacial. Add
+   * HydraFacial reviews to `testimonials` above and set this to true.
+   */
+  enabled: false,
+
   heading: 'What clients say',
   intro: 'Reviews from clients treated at our Brampton location.',
-  /** Summary line above the cards. */
   summary: '5.0 average rating from 112 Google reviews',
 } as const;
 
@@ -288,7 +282,7 @@ export const bookingForm = {
    * Subject line for the notification email the clinic receives.
    * Formspree reads the `_subject` key; other endpoints ignore it harmlessly.
    */
-  emailSubject: 'New booking request — Brazilian offer (Laser Spot)',
+  emailSubject: 'New booking request — HydraFacial offer (Laser Spot)',
 
   /** Text under the submit button. */
   privacyNote:
@@ -321,7 +315,7 @@ export const eligibility = {
 
 export const footer = {
   legalName: 'Laser Spot',
-  tagline: 'Laser hair removal clinic · Brampton, Ontario',
+  tagline: 'Medical spa · Brampton, Ontario',
   links: [
     { label: 'Privacy Policy', href: asset('/privacy/') },
     { label: 'Terms', href: asset('/terms/') },
@@ -353,7 +347,7 @@ export const tracking = {
   formEndpoint: process.env.NEXT_PUBLIC_FORM_ENDPOINT ?? '',
 
   /** Identifies this page's form in GTM / GA4. */
-  formName: 'brazilian_offer',
+  formName: 'hydrafacial_offer',
 
   /** dataLayer event names. */
   events: {

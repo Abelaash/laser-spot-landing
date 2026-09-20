@@ -95,11 +95,10 @@ export function Hero() {
             {/* Floating credential chip over the image. */}
             <div className="absolute -bottom-4 left-4 right-4 rounded-2xl border border-plum-100 bg-cream-50/95 px-4 py-3 backdrop-blur sm:left-6 sm:right-auto sm:max-w-xs">
               <p className="text-sm font-semibold text-plum-900">
-                DEKA Motus AX
+                {hero.deviceChip.title}
               </p>
               <p className="text-xs leading-relaxed text-ink-500">
-                Health Canada licensed alexandrite laser with integrated
-                contact cooling.
+                {hero.deviceChip.body}
               </p>
             </div>
           </div>
