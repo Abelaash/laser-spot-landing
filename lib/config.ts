@@ -129,15 +129,6 @@ export const hero = {
     'Certified medical aestheticians',
     'Sessions in about 30 minutes',
   ],
-  image: {
-    src: asset('/images/clinic-treatment-room.png'),
-    alt: 'Treatment room at the Laser Spot medical spa in Brampton, prepared for a facial treatment',
-  },
-  /** The credential chip layered over the hero image. */
-  deviceChip: {
-    title: 'HydraFacial',
-    body: 'Patented vortex technology with single-use treatment tips, used in licensed clinics worldwide.',
-  },
 } as const;
 
 /* -------------------------------------------------------------------------- */
@@ -218,10 +209,6 @@ export const comfort = {
       body: 'Every treatment uses a fresh, single-use tip that is discarded afterwards — nothing that touches the skin is reused. Rooms are sanitized between clients and linens are changed for every appointment.',
     },
   ],
-  image: {
-    src: asset('/images/clinic-reception.png'),
-    alt: 'The reception and waiting area of the Laser Spot clinic, with soft lighting and neutral furnishings',
-  },
 } as const;
 
 /* -------------------------------------------------------------------------- */

@@ -21,7 +21,11 @@ export function PriceBlock({ size = 'hero', className = '' }: PriceBlockProps) {
 
   return (
     <div className={className}>
-      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+      <div
+        className={`flex flex-wrap items-baseline gap-x-3 gap-y-1 ${
+          isHero ? 'justify-center' : ''
+        }`}
+      >
         <span
           className={
             isHero
@@ -50,7 +54,7 @@ export function PriceBlock({ size = 'hero', className = '' }: PriceBlockProps) {
       <p
         className={
           isHero
-            ? 'mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-plum-600 sm:text-sm'
+            ? 'mt-2 text-center text-xs font-semibold uppercase tracking-[0.14em] text-plum-600 sm:text-sm'
             : 'mt-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-plum-600'
         }
       >
@@ -59,7 +63,7 @@ export function PriceBlock({ size = 'hero', className = '' }: PriceBlockProps) {
       </p>
 
       {isHero && offer.scarcityNote ? (
-        <p className="mt-1.5 text-sm leading-snug text-ink-500">
+        <p className="mt-1.5 text-center text-sm leading-snug text-ink-500">
           {offer.scarcityNote}
         </p>
       ) : null}
