@@ -7,6 +7,11 @@ export function WhatToExpect() {
       aria-labelledby="what-to-expect-heading"
       className="scroll-anchor bg-cream-50"
     >
+      {/* Deep-link target for Google Ads sitelinks. A separate element
+          because the section already carries id="what-to-expect", and an
+          element can only have one id. Zero height, no layout effect. */}
+      <span id="about" aria-hidden="true" className="scroll-anchor block" />
+
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
         <div className="max-w-2xl">
           <h2

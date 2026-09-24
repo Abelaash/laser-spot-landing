@@ -71,8 +71,10 @@
 }
 
 @layer components {
-  /* Anchor offset so the sticky bar never covers a scrolled-to section. */
+  /* Breathing room above any section jumped to via a #hash link, so the
+     heading is not flush against the viewport edge. There is no fixed
+     top header on this page, so this is spacing rather than clearance. */
   .scroll-anchor {
-    scroll-margin-top: 1.5rem;
+    scroll-margin-top: 90px;
   }
 }

@@ -11,6 +11,10 @@ export function ComfortDiscretion() {
       aria-labelledby="comfort-heading"
       className="scroll-anchor bg-cream-100"
     >
+      {/* Deep-link target for Google Ads sitelinks — see the note in
+          WhatToExpect. The section already carries id="comfort". */}
+      <span id="why" aria-hidden="true" className="scroll-anchor block" />
+
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
         <div className="max-w-2xl">
           <h2

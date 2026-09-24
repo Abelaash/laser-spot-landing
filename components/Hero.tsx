@@ -55,7 +55,10 @@ export function Hero() {
           </p>
 
           {offer.showPrice ? (
-            <div className="mx-auto mt-6 max-w-md rounded-2xl border border-plum-100 bg-cream-50 p-5 shadow-[0_2px_24px_-14px_rgba(51,34,44,0.4)] sm:mt-8 sm:p-6">
+            <div
+              id="offer"
+              className="scroll-anchor mx-auto mt-6 max-w-md rounded-2xl border border-plum-100 bg-cream-50 p-5 shadow-[0_2px_24px_-14px_rgba(51,34,44,0.4)] sm:mt-8 sm:p-6"
+            >
               <PriceBlock size="hero" />
             </div>
           ) : null}
