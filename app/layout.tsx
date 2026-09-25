@@ -8,16 +8,21 @@ import { business, hero, offer } from '@/lib/config';
 import './globals.css';
 
 /**
- * GA4 Measurement ID for book.laserspot.ca.
+ * Google tag destinations for book.laserspot.ca.
  *
- * Hardcoded rather than read from an env var so the tag loads on every page
+ * One gtag.js library serves both products: the <script src> loads the
+ * library once, and each gtag('config', ...) call below registers another
+ * destination for it. Adding a second gtag.js src would double-count.
+ *
+ * Hardcoded rather than read from env vars so the tag loads on every page
  * unconditionally — including the booking confirmation state — without
  * depending on a build-time variable being present.
  *
- * NOTE: this is the only Google tag on the site. GtmScript below is currently
- * inert (NEXT_PUBLIC_GTM_ID is unset). If a GTM container is ever enabled,
- * do NOT also configure GA4 inside it or every hit will be counted twice.
+ * NOTE: these are the only Google tags on the site. GtmScript below is inert
+ * (NEXT_PUBLIC_GTM_ID is unset). If a GTM container is ever enabled, do NOT
+ * also configure these IDs inside it or every hit will be counted twice.
  */
+const GOOGLE_ADS_ID = 'AW-16976821320';
 const GA_MEASUREMENT_ID = 'G-L4EEH7KFD8';
 
 const inter = Inter({
@@ -73,6 +78,7 @@ export default function RootLayout({
           {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
+gtag('config', '${GOOGLE_ADS_ID}');
 gtag('config', '${GA_MEASUREMENT_ID}');`}
         </Script>
 
