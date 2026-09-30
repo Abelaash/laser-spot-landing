@@ -12,7 +12,7 @@ import {
   offer,
   tracking,
 } from '@/lib/config';
-import { pushLeadEvent } from '@/lib/gtm';
+import { fireAdsConversion, pushLeadEvent } from '@/lib/gtm';
 
 type FieldName = 'name' | 'phone' | 'email' | 'preferred';
 type Errors = Partial<Record<FieldName, string>>;
@@ -55,6 +55,14 @@ export function BookingForm() {
   );
 
   const successRef = useRef<HTMLDivElement>(null);
+
+  /**
+   * Guards the Google Ads conversion so it can fire at most once per mount,
+   * whatever happens with double-clicks or re-renders. A ref rather than
+   * state: it must not trigger a render, and it must be readable
+   * synchronously in the same tick the submission resolves.
+   */
+  const conversionFiredRef = useRef(false);
 
   // Move focus to the confirmation once React has committed it, so keyboard
   // and screen-reader users land on the result instead of the top of the page.
@@ -121,6 +129,11 @@ export function BookingForm() {
       submitted_at: new Date().toISOString(),
     };
 
+    // Only a real 2xx from the endpoint counts as a conversion. Reaching the
+    // end of the try block is not enough: with no endpoint configured the
+    // request is skipped entirely, and nothing was actually submitted.
+    let postSucceeded = false;
+
     try {
       if (tracking.formEndpoint) {
         const response = await fetch(tracking.formEndpoint, {
@@ -146,6 +159,8 @@ export function BookingForm() {
             `Request failed: ${response.status}${detail ? ` — ${detail.slice(0, 200)}` : ''}`,
           );
         }
+
+        postSucceeded = true;
       } else if (process.env.NODE_ENV !== 'production') {
         // No endpoint configured — keep the page usable in development.
         // eslint-disable-next-line no-console
@@ -155,8 +170,15 @@ export function BookingForm() {
         );
       }
 
-      // Fire the conversion event only after the submission actually succeeded.
+      // Both of these run only on a genuine success: never on page load,
+      // never on a validation error, never on a network failure.
       pushLeadEvent();
+
+      if (postSucceeded && !conversionFiredRef.current) {
+        conversionFiredRef.current = true;
+        fireAdsConversion();
+      }
+
       setStatus('success');
     } catch {
       setStatus('error');
