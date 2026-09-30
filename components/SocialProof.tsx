@@ -23,13 +23,27 @@ export function SocialProof() {
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
 
+  /**
+   * Distance from one card to the next.
+   *
+   * Measured from the cards themselves rather than taken from offsetWidth:
+   * the track has a gap between cards, so the step is card width PLUS gap.
+   * Using the width alone drifts further out of step with every card added.
+   */
+  function cardStep(track: HTMLUListElement): number {
+    const cards = track.children;
+    const first = cards[0] as HTMLElement | undefined;
+    const second = cards[1] as HTMLElement | undefined;
+    if (first && second) return second.offsetLeft - first.offsetLeft;
+    return first?.offsetWidth ?? track.clientWidth;
+  }
+
   /** Derives the active card and the edge states from the scroll position. */
   const sync = useCallback(() => {
     const track = trackRef.current;
     if (!track) return;
 
-    const card = track.firstElementChild as HTMLElement | null;
-    const step = card?.offsetWidth ?? track.clientWidth;
+    const step = cardStep(track);
 
     setActive(step ? Math.round(track.scrollLeft / step) : 0);
     setAtStart(track.scrollLeft <= 1);
@@ -53,19 +67,22 @@ export function SocialProof() {
   function scrollByCard(direction: 1 | -1) {
     const track = trackRef.current;
     if (!track) return;
-    const card = track.firstElementChild as HTMLElement | null;
-    track.scrollBy({
-      left: (card?.offsetWidth ?? track.clientWidth) * direction,
-      behavior: 'smooth',
-    });
+    track.scrollBy({ left: cardStep(track) * direction, behavior: 'smooth' });
   }
 
   function scrollToCard(index: number) {
     const track = trackRef.current;
     if (!track) return;
-    const card = track.firstElementChild as HTMLElement | null;
+
+    // Scroll to the card's own position rather than a multiple of the step,
+    // so it stays correct even if a card ends up a different height or the
+    // gap changes at a breakpoint.
+    const first = track.children[0] as HTMLElement | undefined;
+    const target = track.children[index] as HTMLElement | undefined;
+    if (!first || !target) return;
+
     track.scrollTo({
-      left: (card?.offsetWidth ?? track.clientWidth) * index,
+      left: target.offsetLeft - first.offsetLeft,
       behavior: 'smooth',
     });
   }
