@@ -212,7 +212,7 @@ export const comfort = {
 } as const;
 
 /* -------------------------------------------------------------------------- */
-/*  SOCIAL PROOF — needs HydraFacial reviews before it can be shown           */
+/*  SOCIAL PROOF — real Google reviews of the clinic, quoted verbatim         */
 /* -------------------------------------------------------------------------- */
 
 export type Testimonial = {
@@ -224,23 +224,47 @@ export type Testimonial = {
 };
 
 export const testimonials: Testimonial[] = [
-  // The clinic's three supplied Google reviews are all explicitly about laser
-  // hair removal ("my hair growth has decreased", "recommend her for laser
-  // hair removal"). Showing them under a HydraFacial offer would misrepresent
-  // them, so the section is switched off until HydraFacial reviews arrive.
-  // Paste them here and set socialProof.enabled to true.
+  // Genuine Google reviews of the clinic, quoted verbatim including the
+  // reviewers' own spelling. They describe laser hair removal rather than
+  // HydraFacial, which is why the section is framed around the clinic rather
+  // than this specific treatment. Replace or extend with HydraFacial reviews
+  // when the clinic has them — the carousel handles any number.
+  {
+    quote:
+      'Shela is amazing! She’s so professional, welcoming, and makes every appointment super comfortable. The results have been incredible and I always leave happy. Highly recommend her for laser hair removal! I can’t wait to continue to see results.',
+    name: 'Katie Tsagarelis',
+    meta: 'Google review · Brampton',
+    rating: 5,
+  },
+  {
+    quote:
+      'I have been visiting for the last few years. My hair growth has significantly decreased. The process is completely painless. Friendly service from Sheila everytime I visit.',
+    name: 'Sondeep Rakkar',
+    meta: 'Google review · Brampton',
+    rating: 5,
+  },
+  {
+    quote:
+      'I have been receiving laser hair removal treatments from laser spot and I am glad with the results as the hair growth has really decreased . It is also painless! She is very professional, respectful, and such a friendly person. I really recommend this place!',
+    name: 'Simranpreet Matharu',
+    meta: 'Google review · Brampton',
+    rating: 5,
+  },
 ];
 
 export const socialProof = {
-  /**
-   * Master switch for the reviews section. Currently off: the clinic's
-   * reviews on file are about laser hair removal, not HydraFacial. Add
-   * HydraFacial reviews to `testimonials` above and set this to true.
-   */
-  enabled: false,
+  /** Master switch for the whole section. */
+  enabled: true,
 
-  heading: 'What clients say',
-  intro: 'Reviews from clients treated at our Brampton location.',
+  /**
+   * Framed around the clinic rather than the treatment: the reviews below are
+   * genuine Google reviews of Laser Spot, but they describe other services.
+   * Saying "about the clinic" keeps that honest. If HydraFacial reviews are
+   * added, this can become treatment-specific again.
+   */
+  heading: 'What clients say about the clinic',
+  intro:
+    'Verified Google reviews from clients treated at our Brampton location.',
   summary: '5.0 average rating from 112 Google reviews',
 } as const;
 

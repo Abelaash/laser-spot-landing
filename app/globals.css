@@ -77,4 +77,15 @@
   .scroll-anchor {
     scroll-margin-top: 90px;
   }
+
+  /* Horizontal carousel track: snaps card-to-card, hides the scrollbar but
+     stays natively swipeable on touch and scrollable by keyboard. */
+  .carousel-track {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .carousel-track::-webkit-scrollbar {
+    display: none;
+  }
 }
